@@ -1,0 +1,176 @@
+:root{
+  --bg:#f4f7fb;
+  --text:#172033;
+  --red:#d71920;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 6vw;
+  background:#fff;
+  position:sticky;
+  top:0;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:bold;
+}
+
+.nav{
+  display:flex;
+  gap:24px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#444;
+}
+
+.menu-button{
+  display:none;
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  padding:80px 6vw;
+}
+
+.hero h1{
+  font-size:72px;
+  line-height:1;
+}
+
+.lead{
+  font-size:24px;
+}
+
+.eyebrow{
+  color:var(--red);
+  font-size:12px;
+  letter-spacing:.2em;
+}
+
+.button{
+  display:inline-block;
+  margin-top:20px;
+  background:var(--red);
+  color:#fff;
+  padding:14px 24px;
+  text-decoration:none;
+  border-radius:999px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.card{
+  background:#23344d;
+  color:#fff;
+  padding:24px;
+  border-radius:24px;
+  min-height:180px;
+  display:flex;
+  align-items:flex-end;
+  font-size:24px;
+  font-weight:bold;
+}
+
+.large{
+  grid-row:span 2;
+  background:#b01217;
+}
+
+.section{
+  padding:80px 6vw;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:32px;
+}
+
+.cards article{
+  background:#fff;
+  padding:32px;
+  border-radius:24px;
+}
+
+.dark-section{
+  background:#172033;
+  color:#fff;
+  padding:80px 6vw;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.news{
+  list-style:none;
+  padding:0;
+}
+
+.news li{
+  padding:24px 0;
+  border-bottom:1px solid #ccc;
+  display:grid;
+  grid-template-columns:160px 1fr;
+}
+
+.news a{
+  text-decoration:none;
+  color:var(--red);
+  font-weight:bold;
+}
+
+.footer{
+  background:#111827;
+  color:#fff;
+  padding:80px 6vw;
+}
+
+.white{
+  background:#fff;
+  color:#111827;
+}
+
+@media(max-width:900px){
+
+  .hero,
+  .dark-section,
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .nav{
+    display:none;
+  }
+
+  .menu-button{
+    display:block;
+  }
+}
