@@ -1,0 +1,108 @@
+---
+import DownloadItem from '../../../components/DownloadItem.astro';
+import { getCatalogData } from '../../../lib/microcms.js';
+
+const categories = await getCatalogData();
+---
+
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brochure downloads | MITSUBISHI ELECTRIC BUILDING SOLUTIONS CORPORATION</title>
+<meta name="description" content="A comprehensive collection of downloadable brochures for our elevators, escalators and solutions.">
+<meta property="og:title" content="Brochure downloads | MITSUBISHI ELECTRIC BUILDING SOLUTIONS CORPORATION">
+<meta property="og:type" content="website">
+<meta property="og:description" content="A comprehensive collection of downloadable brochures for our elevators, escalators and solutions.">
+<meta property="og:url" content="https://www.mebs.com/resources/downloads/index.html">
+<meta property="og:site_name" content="MITSUBISHI ELECTRIC BUILDING SOLUTIONS CORPORATION">
+<link rel="stylesheet" href="https://www.mebs.com/common/css/common.css">
+<link rel="stylesheet" href="https://www.mebs.com/resources/css/common.css">
+<link rel="stylesheet" href="https://www.mebs.com/resources/downloads/css/style.css">
+<script src="https://www.mebs.com/common/js/common.js"></script>
+</head>
+<body>
+
+<header class="gs18-Header gs18-Header--MinInteraction" role="banner" data-js-gs18-header></header>
+
+<div class="main downloads" data-id="resources">
+
+  <div class="c-visual">
+    <div class="l-container">
+      <h2 class="c-visual__title">
+        <span class="sub">Resources</span>Brochure downloads
+      </h2>
+    </div>
+  </div>
+
+  <div class="c-bread">
+    <div class="l-container">
+      <ul>
+        <li><a href="https://www.mebs.com/index.html">HOME</a></li>
+        <li><a href="https://www.mebs.com/resources/index.html">Resources</a></li>
+        <li>Brochure downloads</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="resources-lead">
+    <div class="l-container">
+      <div class="resources-lead__column">
+        <p class="resources-lead__txt">Welcome to our comprehensive collection of downloadable brochures, including brochures for our elevators, escalators, elevator modernization, monitoring and control systems, and other products, services and solutions.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="resources-section">
+    <div class="l-container">
+      <h3 class="c-heading c-heading--A">Downloads</h3>
+
+      {categories.map((cat) => (
+        <>
+          {cat.items.length > 0 && (
+            <section class="l-section section-under">
+              <h4 class="c-heading c-heading--B">{cat.nameEn || cat.name}</h4>
+              <div class="downloads-list">
+                {cat.items.map((item) => <DownloadItem item={item} />)}
+              </div>
+            </section>
+          )}
+
+          {cat.children.map((sub) => (
+            <>
+              {sub.items.length > 0 && (
+                <section class="l-section section-under">
+                  <h4 class="c-heading c-heading--B">{sub.nameEn || sub.name}</h4>
+                  <div class="downloads-list">
+                    {sub.items.map((item) => <DownloadItem item={item} />)}
+                  </div>
+                </section>
+              )}
+
+              {sub.children.map((nest) => (
+                nest.items.length > 0 && (
+                  <section class="l-section section-under">
+                    <h4 class="c-heading c-heading--B">{nest.nameEn || nest.name}</h4>
+                    <div class="downloads-list">
+                      {nest.items.map((item) => <DownloadItem item={item} />)}
+                    </div>
+                  </section>
+                )
+              ))}
+            </>
+          ))}
+        </>
+      ))}
+
+    </div>
+  </section>
+
+</div>
+
+<footer class="gs18-Footer" role="contentinfo" data-js-gs18-footer></footer>
+
+<script src="https://www.mebs.com/assets_gws_template_responsive/js/init.js"></script>
+</body>
+</html>

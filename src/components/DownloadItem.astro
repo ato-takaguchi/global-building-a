@@ -1,0 +1,40 @@
+---
+const { item } = Astro.props;
+const title = item.titleEn || item.title;
+const alt = item.thumbnailAltEn || item.thumbnailAlt || title;
+const thumbUrl = item.thumbnail?.url ?? '';
+const fileUrl = item.fileUrl ?? '';
+const ebookUrl = item.ebookUrl ?? '';
+const fileSize = item.fileSize ?? '';
+---
+
+<div class="downloads-item">
+  {ebookUrl ? (
+    <>
+      <a href={ebookUrl} class="downloads-item__link" target="_blank" rel="noopener noreferrer">
+        <div class="downloads-item__img">
+          <img src={thumbUrl} alt={alt} width="301" height="427" loading="lazy" />
+        </div>
+        <div class="downloads-item__title">
+          <p class="downloads-item__name" set:html={title}></p>
+          <p class="downloads-item__data downloads-item__data--ebook">E-book</p>
+        </div>
+      </a>
+      {fileUrl && (
+        <a href={fileUrl} class="downloads-item__link sp-center" target="_blank" rel="noopener noreferrer">
+          <p class="downloads-item__data">{fileSize || 'PDF'}</p>
+        </a>
+      )}
+    </>
+  ) : (
+    <a href={fileUrl} class="downloads-item__link" target="_blank" rel="noopener noreferrer">
+      <div class="downloads-item__img">
+        <img src={thumbUrl} alt={alt} width="301" height="427" loading="lazy" />
+      </div>
+      <div class="downloads-item__title">
+        <p class="downloads-item__name" set:html={title}></p>
+        {fileSize && <p class="downloads-item__data">{fileSize}</p>}
+      </div>
+    </a>
+  )}
+</div>
