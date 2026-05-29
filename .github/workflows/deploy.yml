@@ -38,4 +38,4 @@ jobs:
           MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
 
       - name: Deploy to Cloudflare Pages
-        run: npx wrangler pages deploy dist --project-name global-building-a
+        run: npx wrangler pages deploy dist --project-name mebs-global-a
